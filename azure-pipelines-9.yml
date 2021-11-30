@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: 
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Azure subscription 1(2638d4e5-7a97-42c1-9335-1094797a950e)'
+    subscriptionId: 'Azure subscription 1'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rbx'
+    location: 'West Europe'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/mgarziad/AzureRmPipeline-repo-test1/main/CreateWebApp/azuredeploy.json?token=AWTIMDGBOPXGDJYYBHBCPHDBTONTE'
+    deploymentMode: 'Incremental'
+    deploymentName: 'dv'
+    addSpnToEnvironment: true
